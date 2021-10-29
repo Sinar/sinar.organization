@@ -4,7 +4,7 @@ from collective import dexteritytextindexer
 from plone import schema
 from plone.app.textfield import RichText
 from plone.app.vocabularies.catalog import CatalogSource
-from plone.app.z3cform.widget import RelatedItemsFieldWidget
+from plone.app.z3cform.widget import RelatedItemsFieldWidget, SelectFieldWidget
 from plone.autoform import directives
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
@@ -26,48 +26,27 @@ class IPartners(model.Schema):
     """
 
     # donors
-    directives.widget('donors',
-                      RelatedItemsFieldWidget,
-                      pattern_options={
-                        'basePath': '/',
-                        'mode': 'auto',
-                        'favourites': [],
-                        }
-                      )
-
-    donors = RelationList(
-        title=u'Donors',
-        description=_(u'''
-        Organizations that have provided funding for this item
-        '''),
-        default=[],
-        value_type=RelationChoice(
-            source=CatalogSource(portal_type='Organization'),
-        ),
-        required=False,
-    )
+    directives.widget(donors=SelectFieldWidget)
+    donors = schema.List(
+            title=u'Donors',
+            description=u'Organizations that have provided funding',
+            required=False,
+            value_type=schema.Choice(
+                vocabulary='sinar.organization.Organizations',
+                ),
+            )
 
     # implementing partners
-    directives.widget('implementing_partners',
-                      RelatedItemsFieldWidget,
-                      pattern_options={
-                        'basePath': '/',
-                        'mode': 'auto',
-                        'favourites': [],
-                        }
-                      )
+    directives.widget(implementing_partners=SelectFieldWidget)
+    implementing_partners = schema.List(
+            title=u'Implementing Partners',
+            description=u'Partners implementing this item',
+            required=False,
+            value_type=schema.Choice(
+                vocabulary='sinar.organization.Organizations',
+                ),
+            )
 
-    implementing_partners = RelationList(
-        title=u'Implementing Parnters',
-        description=_(u'''
-        Organizations that are implementing this item.
-        '''),
-        default=[],
-        value_type=RelationChoice(
-            source=CatalogSource(portal_type='Organization'),
-        ),
-        required=False,
-    )
 
     # fieldset set the tabs on the edit form
 
