@@ -9,7 +9,14 @@ from zope.component import adapter
 from zope.interface import Interface
 from zope.interface import implementer
 from zope.interface import provider
-
+from plone.supermodel.directives import fieldset
+from collective import dexteritytextindexer
+from plone.app.textfield import RichText
+from plone.autoform import directives
+from plone.app.z3cform.widget import RelatedItemsFieldWidget
+from z3c.relationfield.schema import RelationChoice
+from z3c.relationfield.schema import RelationList
+from plone.app.vocabularies.catalog import CatalogSource
 
 class IPartnersMarker(Interface):
     pass
@@ -20,12 +27,60 @@ class IPartners(model.Schema):
     """
     """
 
-    project = schema.TextLine(
-        title=_(u'Project'),
-        description=_(u'Give in a project name'),
+    # donors
+    directives.widget('donors',
+                      RelatedItemsFieldWidget,
+                      pattern_options={
+                        'basePath': '/',
+                        'mode': 'auto',
+                        'favourites': [],
+                        }
+                      )
+
+    donors = RelationList(
+        title=u'Donors',
+        description=_(u'''
+        Organizations that have provided funding for this item
+        '''),
+        default=[],
+        value_type=RelationChoice(
+            source=CatalogSource(portal_type='Organization'),
+        ),
         required=False,
     )
 
+    # implementing partners
+    directives.widget('implementing_partners',
+                      RelatedItemsFieldWidget,
+                      pattern_options={
+                        'basePath': '/',
+                        'mode': 'auto',
+                        'favourites': [],
+                        }
+                      )
+
+    implementing_partners = RelationList(
+        title=u'Implementing Parnters',
+        description=_(u'''
+        Organizations that are implementing this item.
+        '''),
+        default=[],
+        value_type=RelationChoice(
+            source=CatalogSource(portal_type='Organization'),
+        ),
+        required=False,
+    )
+
+    # fieldset set the tabs on the edit form
+
+    fieldset(
+            'partners',
+            label=_(u'Partners'),
+            fields=[
+                'donors',
+                'implementing_partners',
+                ],
+            )
 
 @implementer(IPartners)
 @adapter(IPartnersMarker)
@@ -34,11 +89,21 @@ class Partners(object):
         self.context = context
 
     @property
-    def project(self):
-        if safe_hasattr(self.context, 'project'):
-            return self.context.project
+    def donors(self):
+        if safe_hasattr(self.context, 'donors'):
+            return self.context.donors
         return None
 
-    @project.setter
-    def project(self, value):
-        self.context.project = value
+    @donors.setter
+    def donors(self, value):
+        self.context.donors= value
+
+    @property
+    def implementing_partners(self):
+        if safe_hasattr(self.context, 'implementing_partners'):
+            return self.context.implementing_partners
+        return None
+
+    @implementing_partners.setter
+    def implementing_partners(self, value):
+        self.context.implementing_partners= value
