@@ -3,7 +3,7 @@
 from plone import api
 from plone.app.testing import setRoles, TEST_USER_ID
 from sinar.organization.testing import (
-    SINAR_ORGANIZATION_INTEGRATION_TESTING  # noqa: E501,
+    SINAR_ORGANIZATION_INTEGRATION_TESTING  # noqa: E501,,
 )
 
 import unittest

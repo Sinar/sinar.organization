@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="sinar.organization">
+
+    <!-- -*- extra stuff goes here -*- -->
+
+    <utility
+        component=".organizations.OrganizationsFactory"
+        name="sinar.organization.Organizations"
+    />
+
+
+</configure>
