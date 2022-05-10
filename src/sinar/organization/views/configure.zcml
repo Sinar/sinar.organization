@@ -8,6 +8,15 @@
 
   <browser:page
     name="organization-view"
+    for="*"
+    class=".organization_view.OrganizationView"
+    template="organization_view.pt"
+    permission="zope2.View"
+    layer="sinar.organization.interfaces.ISinarOrganizationLayer"
+    />
+
+  <browser:page
+    name="organization-view"
     for="Products.CMFCore.interfaces.IFolderish"
     class=".organization_view.OrganizationView"
     template="organization_view.pt"

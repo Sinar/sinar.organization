@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
 
+# from sinar.organization import _
 from plone.dexterity.browser.view import DefaultView
-from sinar.organization import _
+from zope.interface import Interface
 
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
+
+class IOrganizationView(Interface):
+    """ Marker Interface for IOrganizationView"""
 
 
 class OrganizationView(DefaultView):
