@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from plone import schema
+from plone.app.z3cform.widget import SelectFieldWidget
+from plone.autoform import directives
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
 from Products.CMFPlone.utils import safe_hasattr
@@ -18,12 +20,16 @@ class IOrganizationType(model.Schema):
     """
     """
 
-    project = schema.TextLine(
-        title=_(u'Project'),
-        description=_(u'Give in a project name'),
-        required=False,
-    )
+    directives.widget(organization_type=SelectFieldWidget)
+    organization_type = schema.Choice(
+        title=_(u'Organization Type'),
+        description=_(u'''
+        Type that bests represents this organization.
+        '''),
 
+        required=False,
+        vocabulary='sinar.OrganizationType',
+        ) 
 
 @implementer(IOrganizationType)
 @adapter(IOrganizationTypeMarker)
