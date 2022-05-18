@@ -24,8 +24,13 @@ class OrganizationType(object):
         # Just an example list of content for our vocabulary,
         # this can be any static or dynamic data, a catalog result for example.
         items = [
-            VocabItem(u'sony-a7r-iii', _(u'Sony Aplha 7R III')),
-            VocabItem(u'canon-5d-iv', _(u'Canon 5D IV')),
+            VocabItem(u'academe', _(u'Academia / Educational Institution')),
+            VocabItem(u'cso', _(u'Civil Society')),
+            VocabItem(u'government-agency', _(u'Government Agency')),
+            VocabItem(u'ingo', _(u'Intergovernmental Organization')),
+            VocabItem(u'private-sector', _(u'Private Sector / Business')),
+            VocabItem(u'trade-association', _(u'Trade Association')),
+            VocabItem(u'trade-union', _(u'Trade Union')),
         ]
 
         # Fix context if you are using the vocabulary in DataGridField.

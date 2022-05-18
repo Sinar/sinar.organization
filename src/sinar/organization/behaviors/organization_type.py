@@ -28,7 +28,7 @@ class IOrganizationType(model.Schema):
         '''),
 
         required=False,
-        vocabulary='sinar.OrganizationType',
+        vocabulary='sinar.organization.OrganizationType',
         ) 
 
 @implementer(IOrganizationType)
@@ -38,11 +38,11 @@ class OrganizationType(object):
         self.context = context
 
     @property
-    def project(self):
-        if safe_hasattr(self.context, 'project'):
-            return self.context.project
+    def organanization_type(self):
+        if safe_hasattr(self.context, 'organanization_type'):
+            return self.context.organanization_type
         return None
 
-    @project.setter
-    def project(self, value):
-        self.context.project = value
+    @organanization_type.setter
+    def organanization_type(self, value):
+        self.context.organanization_type = value
