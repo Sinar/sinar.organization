@@ -10,6 +10,16 @@
     <!-- -*- extra stuff goes here -*- -->
 
     <plone:behavior
+        name="sinar.organization.organization_type"
+        title="OrganizationType"
+        description="Standard types of organizations used in development"
+        provides=".organization_type.IOrganizationType"
+        factory=".organization_type.OrganizationType"
+        marker=".organization_type.IOrganizationTypeMarker"
+        />
+
+
+    <plone:behavior
         name="sinar.organization.partners"
         title="Partners"
         description="Relations for funder, partner and other types of partner organizations for a project"
