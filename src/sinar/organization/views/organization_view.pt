@@ -16,15 +16,6 @@
 ...
 </p>
 
-<a
-  href="www.test.com"
-  tal:define="a_fine_url context/website_link"
-  tal:attributes="href a_fine_url"
-  tal:content="string:Website Link"
->
-  ...
-</a>
-
 </metal:block>
   </metal:content-core>
 </body>
