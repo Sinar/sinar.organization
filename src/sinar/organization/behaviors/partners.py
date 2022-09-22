@@ -25,6 +25,18 @@ class IPartners(model.Schema):
     """
     """
 
+    # beneficiaries
+    directives.widget(beneficiaries=SelectFieldWidget)
+    beneficiaries = schema.List(
+            title=u'Beneficiaries',
+            description=u'''Organizations that are beneficiaries of an
+            activity or project''',
+            required=False,
+            value_type=schema.Choice(
+                vocabulary='sinar.organization.Organizations',
+                ),
+            )
+
     # donors
     directives.widget(donors=SelectFieldWidget)
     donors = schema.List(
@@ -56,6 +68,7 @@ class IPartners(model.Schema):
             fields=[
                 'donors',
                 'implementing_partners',
+                'beneficiaries',
                 ],
             )
 
@@ -74,6 +87,16 @@ class Partners(object):
     @donors.setter
     def donors(self, value):
         self.context.donors= value
+
+    @property
+    def beneficiaries(self):
+        if safe_hasattr(self.context, 'beneficiaries'):
+            return self.context.beneficiaries
+        return None
+
+    @beneficiaries.setter
+    def beneficiaries(self, value):
+        self.context.beneficiaries= value
 
     @property
     def implementing_partners(self):

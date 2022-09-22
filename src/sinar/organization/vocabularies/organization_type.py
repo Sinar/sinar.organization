@@ -25,12 +25,14 @@ class OrganizationType(object):
         # this can be any static or dynamic data, a catalog result for example.
         items = [
             VocabItem(u'academe', _(u'Academia / Educational Institution')),
+            VocabItem(u'bilateral',_(u'Bilateral Organization')),
             VocabItem(u'cso', _(u'Civil Society')),
             VocabItem(u'government-agency', _(u'Government Agency')),
             VocabItem(u'ingo', _(u'Intergovernmental Organization')),
+            VocabItem(u'media',_(u'News or Media Organization')),
             VocabItem(u'private-sector', _(u'Private Sector / Business')),
-            VocabItem(u'trade-association', _(u'Trade Association')),
-            VocabItem(u'trade-union', _(u'Trade Union')),
+            VocabItem(u'research', _(u'Research Institutions and Think Tanks')),
+            VocabItem(u'trade-association', _(u'Trade Association or Union')),
         ]
 
         # Fix context if you are using the vocabulary in DataGridField.
