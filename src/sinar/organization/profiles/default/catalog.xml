@@ -3,7 +3,7 @@
   <index name="donors" meta_type="KeywordIndex">
       <indexed_attr value="donors" />
   </index>
-  <column value="implementing_partners" />
+  <column value="donors" />
   <index name="implementing_partners" meta_type="KeywordIndex">
       <indexed_attr value="implementing_partners" />
   </index>
