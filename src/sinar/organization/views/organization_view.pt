@@ -9,8 +9,6 @@
   <metal:content-core fill-slot="content-core">
   <metal:block define-macro="content-core">
 
-<div tal:content="context/description"></div>
-
 <div tal:content="structure context/text/output | nothing" /> 
 
 </metal:block>
