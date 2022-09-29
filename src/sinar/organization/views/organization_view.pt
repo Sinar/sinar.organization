@@ -9,9 +9,9 @@
   <metal:content-core fill-slot="content-core">
   <metal:block define-macro="content-core">
 
-<p tal:content="context/description">
-...
-</p>
+<div tal:content="context/description"></div>
+
+<div tal:content="structure context/text/output | nothing" /> 
 
 </metal:block>
   </metal:content-core>
