@@ -8,13 +8,22 @@
 
   <browser:viewlet
      name="implementing-partners"
-     for="plone.app.contenttypes.interfaces.IDocument"
-     manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+     for="sinar.activity.content.activity.IActivity"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
      layer="sinar.organization.interfaces.ISinarOrganizationLayer"
      class=".implementing_partners.ImplementingPartners"
      template="implementing-partners.pt"
      permission="zope2.View"
      />
 
+  <browser:viewlet
+     name="implementing-partners"
+     for="sinar.resource.content.resource.IResource"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+     layer="sinar.organization.interfaces.ISinarOrganizationLayer"
+     class=".implementing_partners.ImplementingPartners"
+     template="implementing-partners.pt"
+     permission="zope2.View"
+     />
 
 </configure>

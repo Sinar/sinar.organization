@@ -1,15 +1,20 @@
 # -*- coding: utf-8 -*-
 
 from plone.app.layout.viewlets import ViewletBase
-
+from plone import api
+from plone.app.uuid.utils import uuidToObject
 
 class ImplementingPartners(ViewletBase):
 
-    def update(self):
-        self.message = self.get_message()
+    def implementing(self):
 
-    def get_message(self):
-        return u'My message'
+        objects = []
+        partners = self.context.implementing_partners
+        for partner in partners:
+            obj = uuidToObject(partner)
+            objects.append(obj)
+
+        return objects
 
     def index(self):
         return super(ImplementingPartners, self).render()
