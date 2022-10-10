@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="sinar.organization">
+
+ <!-- -*- extra stuff goes here -*- -->
+
+  <browser:viewlet
+     name="implementing-partners"
+     for="plone.app.contenttypes.interfaces.IDocument"
+     manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+     layer="sinar.organization.interfaces.ISinarOrganizationLayer"
+     class=".implementing_partners.ImplementingPartners"
+     template="implementing-partners.pt"
+     permission="zope2.View"
+     />
+
+
+</configure>
