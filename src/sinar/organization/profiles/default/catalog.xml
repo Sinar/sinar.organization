@@ -12,4 +12,8 @@
       <indexed_attr value="beneficiaries" />
   </index>
   <column value="beneficiaries" />
+  <index name="organization_type" meta_type="KeywordIndex">
+      <indexed_attr value="organization_type" />
+  </index>
+  <column value="organization_type" />
 </object>

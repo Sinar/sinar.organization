@@ -38,11 +38,11 @@ class OrganizationType(object):
         self.context = context
 
     @property
-    def organanization_type(self):
-        if safe_hasattr(self.context, 'organanization_type'):
-            return self.context.organanization_type
+    def organization_type(self):
+        if safe_hasattr(self.context, 'organization_type'):
+            return self.context.organization_type
         return None
 
-    @organanization_type.setter
-    def organanization_type(self, value):
-        self.context.organanization_type = value
+    @organization_type.setter
+    def organization_type(self, value):
+        self.context.organization_type= value
