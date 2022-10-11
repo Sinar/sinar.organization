@@ -9,6 +9,13 @@
   <metal:content-core fill-slot="content-core">
   <metal:block define-macro="content-core">
 
+
+  <div><dl><dt>Type:</dt>
+           <dd tal:content="view/organization_type_title | nothing"
+                   /> 
+      </dl>
+  </div> 
+
 <div tal:content="structure context/text/output | nothing" /> 
 
 </metal:block>
