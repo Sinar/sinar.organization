@@ -23,10 +23,12 @@ class OrganizationView(DefaultView):
                              'sinar.organization.OrganizationType')
 
         vocabulary = factory(self)
+        if self.context.organization_type:
+            term = vocabulary.getTerm(self.context.organization_type)
+            return term.title
+        else:
+            return None
 
-        term = vocabulary.getTerm(self.context.organization_type)
-
-        return term.title
 
 
     def __call__(self):
