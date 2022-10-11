@@ -1,7 +1,7 @@
-<div class="implementing_partners">
+<div class="implementing_partners" tal:condition="view/implementing">
     <hr />
     <h4>Partners</h4>
-    <span tal:repeat="partner python: view.implementing()">
+    <span tal:repeat="partner view/implementing">
        <a tal:attributes="href partner/absolute_url;
                           alt partner/title;
                           title partner/title;"

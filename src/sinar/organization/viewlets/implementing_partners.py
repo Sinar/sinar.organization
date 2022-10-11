@@ -11,9 +11,11 @@ class ImplementingPartners(ViewletBase):
 
         objects = []
         partners = self.context.implementing_partners
-        for partner in partners:
-            obj = uuidToObject(partner)
-            objects.append(obj)
+        
+        if partners:
+            for partner in partners:
+                obj = uuidToObject(partner)
+                objects.append(obj)
 
         return objects
 
