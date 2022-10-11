@@ -2,9 +2,10 @@
 
 # from sinar.organization import _
 from plone.dexterity.browser.view import DefaultView
-from zope.interface import Interface
 from zope.component import getUtility
+from zope.interface import Interface
 from zope.schema.interfaces import IVocabularyFactory
+
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 

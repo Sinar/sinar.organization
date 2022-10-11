@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from plone.app.layout.viewlets import ViewletBase
 from plone import api
+from plone.app.layout.viewlets import ViewletBase
 from plone.app.uuid.utils import uuidToObject
+
 
 class ImplementingPartners(ViewletBase):
 

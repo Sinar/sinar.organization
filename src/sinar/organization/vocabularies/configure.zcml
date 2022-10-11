@@ -5,6 +5,12 @@
     <!-- -*- extra stuff goes here -*- -->
 
     <utility
+        component=".government_agency.GovernmentAgencyFactory"
+        name="sinar.organization.GovernmentAgency"
+    />
+
+
+    <utility
         component=".organization_type.OrganizationTypeFactory"
         name="sinar.organization.OrganizationType"
     />
