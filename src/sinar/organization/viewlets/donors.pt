@@ -1,3 +1,17 @@
-<div class="days_to_conf">
-    ${view/message}
+<div class="donors" tal:condition="view/donors">
+    <hr />
+    <h4>Supported by</h4>
+    <span tal:repeat="partner view/donors">
+       <a tal:attributes="href partner/absolute_url;
+                          alt partner/title;
+                          title partner/title;"
+                          href="" alt="" title="">
+        <img tal:condition="partner/image" tal:attributes="src string:
+        ${partner/absolute_url}/@@images/image/thumb" class="img-thumbnail">
+        <span tal:condition="not: partner/image"
+              tal:replace="partner/title" />
+       </a>
+    
+   </span>
+
 </div>
