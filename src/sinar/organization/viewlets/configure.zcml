@@ -7,6 +7,16 @@
  <!-- -*- extra stuff goes here -*- -->
 
   <browser:viewlet
+     name="donors"
+     for="plone.app.contenttypes.interfaces.IDocument"
+     manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+     layer="sinar.organization.interfaces.ISinarOrganizationLayer"
+     class=".donors.Donors"
+     template="donors.pt"
+     permission="zope2.View"
+     />
+
+  <browser:viewlet
      name="implementing-partners"
      for="sinar.activity.content.activity.IActivity"
      manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"

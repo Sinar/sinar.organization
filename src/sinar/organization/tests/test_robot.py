@@ -2,7 +2,7 @@
 from plone.app.testing import ROBOT_TEST_LEVEL
 from plone.testing import layered
 from sinar.organization.testing import (
-    SINAR_ORGANIZATION_ACCEPTANCE_TESTING  # noqa: E501,,,,,,,,
+    SINAR_ORGANIZATION_ACCEPTANCE_TESTING  # noqa: E501,,,,,,,,,
 )
 
 import os
