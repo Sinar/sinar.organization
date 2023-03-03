@@ -67,6 +67,16 @@
      template="implementing-partners.pt"
      permission="zope2.View"
      />
+     
+  <browser:viewlet
+     name="implementing-partners"
+     for="sinar.advisory.content.advisory.IAdvisory"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+     layer="sinar.organization.interfaces.ISinarOrganizationLayer"
+     class=".implementing_partners.ImplementingPartners"
+     template="implementing-partners.pt"
+     permission="zope2.View"
+     />
 
 
 </configure>
