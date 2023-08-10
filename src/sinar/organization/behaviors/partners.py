@@ -14,7 +14,11 @@ from sinar.organization import _
 from z3c.relationfield.schema import RelationChoice, RelationList
 from zope.component import adapter
 from zope.interface import implementer, Interface, provider
-
+from plone.autoform import directives
+from plone.app.z3cform.widget import RelatedItemsFieldWidget
+from z3c.relationfield.schema import RelationChoice
+from z3c.relationfield.schema import RelationList
+from plone.app.vocabularies.catalog import CatalogSource
 
 class IPartnersMarker(Interface):
     pass
@@ -26,51 +30,77 @@ class IPartners(model.Schema):
     """
 
     # beneficiaries
-    directives.widget(beneficiaries=SelectFieldWidget)
-    beneficiaries = schema.List(
-            title=u'Beneficiaries',
-            description=u'''Organizations that are beneficiaries of an
-            activity or project''',
-            required=False,
-            value_type=schema.Choice(
-                vocabulary='sinar.organization.Organizations',
-                ),
-            )
+
+    directives.widget('beneficiaries',
+                      RelatedItemsFieldWidget,
+                      pattern_options={
+                          'basePath': '/',
+                          'mode': 'auto',
+                          'favourites': [],
+                      }
+                      )
+
+    beneficiaries = RelationList(
+        title=u'Beneficiaries',
+        description=u'''Organizations that are beneficiaries of an
+                        activity or project''',
+        required=False,
+        value_type=RelationChoice(
+            source=CatalogSource(portal_type='Organization'),
+        ),
+    )
 
     # donors
-    directives.widget(donors=SelectFieldWidget)
-    donors = schema.List(
-            title=u'Donors',
-            description=u'Organizations that have provided funding',
-            required=False,
-            value_type=schema.Choice(
-                vocabulary='sinar.organization.Organizations',
-                ),
-            )
+    directives.widget('donors',
+                      RelatedItemsFieldWidget,
+                      pattern_options={
+                          'basePath': '/',
+                          'mode': 'auto',
+                          'favourites': [],
+                      }
+                      )
+
+    donors = RelationList(
+        title=u'Donors',
+        description=u'''Organizations that are donors of an
+                        activity or project''',
+        required=False,
+        value_type=RelationChoice(
+            source=CatalogSource(portal_type='Organization'),
+        ),
+    )
 
     # implementing partners
-    directives.widget(implementing_partners=SelectFieldWidget)
-    implementing_partners = schema.List(
-            title=u'Implementing Partners',
-            description=u'Partners implementing this item',
-            required=False,
-            value_type=schema.Choice(
-                vocabulary='sinar.organization.Organizations',
-                ),
-            )
+    directives.widget('implementing_partners',
+                      RelatedItemsFieldWidget,
+                      pattern_options={
+                          'basePath': '/',
+                          'mode': 'auto',
+                          'favourites': [],
+                      }
+                      )
 
+    implementing_partners = RelationList(
+        title=u'Implementing Partners',
+        description=u'''Organizations that are implementing partners of an
+                        activity or project''',
+        required=False,
+        value_type=RelationChoice(
+            source=CatalogSource(portal_type='Organization'),
+        ),
+    )
 
     # fieldset set the tabs on the edit form
-
     fieldset(
-            'partners',
-            label=_(u'Partners'),
-            fields=[
-                'donors',
-                'implementing_partners',
-                'beneficiaries',
-                ],
-            )
+        'partners',
+        label=_(u'Partners'),
+        fields=[
+            'donors',
+            'implementing_partners',
+            'beneficiaries',
+        ],
+    )
+
 
 @implementer(IPartners)
 @adapter(IPartnersMarker)
@@ -86,7 +116,7 @@ class Partners(object):
 
     @donors.setter
     def donors(self, value):
-        self.context.donors= value
+        self.context.donors = value
 
     @property
     def beneficiaries(self):
@@ -96,7 +126,7 @@ class Partners(object):
 
     @beneficiaries.setter
     def beneficiaries(self, value):
-        self.context.beneficiaries= value
+        self.context.beneficiaries = value
 
     @property
     def implementing_partners(self):
@@ -106,4 +136,4 @@ class Partners(object):
 
     @implementing_partners.setter
     def implementing_partners(self, value):
-        self.context.implementing_partners= value
+        self.context.implementing_partners = value
