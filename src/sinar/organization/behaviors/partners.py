@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from plone.app.dexterity import textindexer
+from collective import dexteritytextindexer
 from plone import schema
 from plone.app.textfield import RichText
 from plone.app.vocabularies.catalog import CatalogSource
@@ -30,7 +30,7 @@ class IPartners(model.Schema):
     """
 
     # beneficiaries
-
+    dexteritytextindexer.searchable('beneficiaries')
     directives.widget('beneficiaries',
                       RelatedItemsFieldWidget,
                       pattern_options={
@@ -51,6 +51,7 @@ class IPartners(model.Schema):
     )
 
     # donors
+    dexteritytextindexer.searchable('donors')
     directives.widget('donors',
                       RelatedItemsFieldWidget,
                       pattern_options={
@@ -71,6 +72,7 @@ class IPartners(model.Schema):
     )
 
     # implementing partners
+    dexteritytextindexer.searchable('implementing_partners')
     directives.widget('implementing_partners',
                       RelatedItemsFieldWidget,
                       pattern_options={
