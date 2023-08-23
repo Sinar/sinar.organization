@@ -6,7 +6,33 @@
 <!-- -*- extra stuff goes here -*- -->
 
    <records interface="plone.app.querystring.interfaces.IQueryField"
-             prefix="plone.app.querystring.field.donors">
+             prefix="plone.app.querystring.field.accountable_partner_uids">
+        <value key="title" i18n:translate="">Accountable Partners</value>
+        <value key="description" i18n:translate=""></value>
+        <value key="enabled">True</value>
+        <value key="sortable">False</value>
+        <value key="operations">
+            <element>plone.app.querystring.operation.selection.any</element>
+        </value>
+        <value key="vocabulary">sinar.organization.Organizations</value>
+       <value key="group" i18n:translate="">Metadata</value>
+   </records>
+
+   <records interface="plone.app.querystring.interfaces.IQueryField"
+             prefix="plone.app.querystring.field.extending_partner_uids">
+        <value key="title" i18n:translate="">Extending Partners</value>
+        <value key="description" i18n:translate=""></value>
+        <value key="enabled">True</value>
+        <value key="sortable">False</value>
+        <value key="operations">
+            <element>plone.app.querystring.operation.selection.any</element>
+        </value>
+        <value key="vocabulary">sinar.organization.Organizations</value>
+       <value key="group" i18n:translate="">Metadata</value>
+   </records>
+
+   <records interface="plone.app.querystring.interfaces.IQueryField"
+             prefix="plone.app.querystring.field.funding_partner_uids">
         <value key="title" i18n:translate="">Donors and Funders</value>
         <value key="description" i18n:translate=""></value>
         <value key="enabled">True</value>
@@ -18,7 +44,7 @@
        <value key="group" i18n:translate="">Metadata</value>
    </records>
    <records interface="plone.app.querystring.interfaces.IQueryField"
-             prefix="plone.app.querystring.field.implementing_partners">
+             prefix="plone.app.querystring.field.implementing_partner_uids">
         <value key="title" i18n:translate="">Implementing Partners</value>
         <value key="description" i18n:translate=""></value>
         <value key="enabled">True</value>
@@ -30,7 +56,7 @@
        <value key="group" i18n:translate="">Metadata</value>
    </records>
    <records interface="plone.app.querystring.interfaces.IQueryField"
-             prefix="plone.app.querystring.field.beneficiaries">
+             prefix="plone.app.querystring.field.beneficiary_partner_uids">
         <value key="title" i18n:translate="">Beneficiary Partners</value>
         <value key="description" i18n:translate=""></value>
         <value key="enabled">True</value>
