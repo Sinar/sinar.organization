@@ -28,5 +28,20 @@
         marker=".partners.IPartnersMarker"
         />
 
+    <adapter 
+        factory=".partners.AccountablePartnersIndexer"
+        name="accountable_partner_uids" />
+    <adapter 
+        factory=".partners.BeneficiaryPartnersIndexer"
+        name="beneficiary_partner_uids" />
+    <adapter 
+        factory=".partners.ExtendingPartnersIndexer"
+        name="extending_partner_uids" />
+    <adapter 
+        factory=".partners.FundingPartnersIndexer"
+        name="funding_partner_uids" />
+    <adapter 
+        factory=".partners.ImplementingPartnersIndexer"
+        name="implementing_partner_uids" />
 
 </configure>

@@ -19,6 +19,8 @@ from plone.app.z3cform.widget import RelatedItemsFieldWidget
 from z3c.relationfield.schema import RelationChoice
 from z3c.relationfield.schema import RelationList
 from plone.app.vocabularies.catalog import CatalogSource
+from plone.indexer.interfaces import IIndexer
+from Products.ZCatalog.interfaces import IZCatalog
 
 class IPartnersMarker(Interface):
     pass
@@ -206,3 +208,83 @@ class Partners(object):
     @implementing_partners.setter
     def implementing_partners(self, value):
         self.context.implementing_partners = value
+
+
+@implementer(IIndexer)
+@adapter(IPartnersMarker, IZCatalog)
+class AccountablePartnersIndexer(object):
+    """
+    """
+
+    def __init__(self, context, catalog):
+        self.partners = IPartnersMarker(context)
+
+    def __call__(self):
+        uids = []
+        for partners in self.partners.accountable_partners:
+            uids.append(partners.to_object.UID())
+        return uids
+
+
+@implementer(IIndexer)
+@adapter(IPartnersMarker, IZCatalog)
+class BeneficiaryPartnersIndexer(object):
+    """
+    """
+
+    def __init__(self, context, catalog):
+        self.partners = IPartnersMarker(context)
+
+    def __call__(self):
+        uids = []
+        for partners in self.partners.beneficiary_partners:
+            uids.append(partners.to_object.UID())
+        return uids
+
+
+@implementer(IIndexer)
+@adapter(IPartnersMarker, IZCatalog)
+class ExtendingPartnersIndexer(object):
+    """
+    """
+
+    def __init__(self, context, catalog):
+        self.partners = IPartnersMarker(context)
+
+    def __call__(self):
+        uids = []
+        for partners in self.partners.extending_partners:
+            uids.append(partners.to_object.UID())
+        return uids
+
+
+@implementer(IIndexer)
+@adapter(IPartnersMarker, IZCatalog)
+class FundingPartnersIndexer(object):
+    """
+    """
+
+    def __init__(self, context, catalog):
+        self.partners = IPartnersMarker(context)
+
+    def __call__(self):
+        uids = []
+        for partners in self.partners.funding_partners:
+            uids.append(partners.to_object.UID())
+        return uids
+
+
+@implementer(IIndexer)
+@adapter(IPartnersMarker, IZCatalog)
+class ImplementingPartnersIndexer(object):
+    """
+    """
+
+    def __init__(self, context, catalog):
+        self.partners = IPartnersMarker(context)
+
+    def __call__(self):
+        uids = []
+        for partners in self.partners.implementing_partners:
+            uids.append(partners.to_object.UID())
+        return uids

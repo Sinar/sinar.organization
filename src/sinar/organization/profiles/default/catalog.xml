@@ -4,4 +4,30 @@
       <indexed_attr value="organization_type" />
   </index>
   <column value="organization_type" />
+
+  <index name="accountable_partner_uids" meta_type="KeywordIndex">
+      <indexed_attr value="accountable_partner_uids" />
+  </index>
+  <column value="accountable_partner_uids" />
+
+  <index name="beneficiary_partner_uids" meta_type="KeywordIndex">
+      <indexed_attr value="beneficiary_partner_uids" />
+  </index>
+  <column value="beneficiary_partner_uids" />
+
+  <index name="extending_partner_uids" meta_type="KeywordIndex">
+      <indexed_attr value="extending_partner_uids" />
+  </index>
+  <column value="extending_partner_uids" />
+
+  <index name="funding_partner_uids" meta_type="KeywordIndex">
+      <indexed_attr value="funding_partner_uids" />
+  </index>
+  <column value="funding_partner_uids" />
+
+  <index name="implementing_partner_uids" meta_type="KeywordIndex">
+      <indexed_attr value="implementing_partner_uids" />
+  </index>
+  <column value="implementing_partner_uids" />
+
 </object>
