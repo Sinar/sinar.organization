@@ -43,6 +43,7 @@
         <value key="vocabulary">sinar.organization.Organizations</value>
        <value key="group" i18n:translate="">Metadata</value>
    </records>
+
    <records interface="plone.app.querystring.interfaces.IQueryField"
              prefix="plone.app.querystring.field.implementing_partner_uids">
         <value key="title" i18n:translate="">Implementing Partners</value>
@@ -66,5 +67,16 @@
         </value>
         <value key="vocabulary">sinar.organization.Organizations</value>
        <value key="group" i18n:translate="">Metadata</value>
+   </records>
+
+   <!-- remove old unused records -->
+  <records remove="true" interface="plone.app.querystring.interfaces.IQueryField"
+             prefix="plone.app.querystring.field.donors">
+   </records>
+   <records remove="true" interface="plone.app.querystring.interfaces.IQueryField"
+             prefix="plone.app.querystring.field.implementing_partners">
+   </records>
+   <records remove="true" interface="plone.app.querystring.interfaces.IQueryField"
+             prefix="plone.app.querystring.field.beneficiaries">
    </records>
 </registry>
