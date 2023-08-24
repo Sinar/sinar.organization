@@ -2,22 +2,14 @@
 
 from plone import api
 from plone.app.layout.viewlets import ViewletBase
-from plone.app.uuid.utils import uuidToObject
-
+from collective.relationhelpers import api
 
 class ImplementingPartners(ViewletBase):
 
     def implementing(self):
 
-        objects = []
-        partners = self.context.implementing_partners
-        
-        if partners:
-            for partner in partners:
-                obj = uuidToObject(partner)
-                objects.append(obj)
-
-        return objects
+        return api.relations(self.context,
+                             attribute="implementing_partners")
 
     def index(self):
         return super(ImplementingPartners, self).render()
