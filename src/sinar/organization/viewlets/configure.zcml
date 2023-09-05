@@ -36,8 +36,6 @@
      permission="zope2.View"
      />
 
-
-
   <browser:viewlet
      name="implementing-partners"
      for="sinar.activity.content.activity.IActivity"
