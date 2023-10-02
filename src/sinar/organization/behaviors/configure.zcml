@@ -35,6 +35,9 @@
         factory=".partners.BeneficiaryPartnersIndexer"
         name="beneficiary_partner_uids" />
     <adapter 
+        factory=".partners.CitedPartnersIndexer"
+        name="cited_partner_uids" />
+    <adapter 
         factory=".partners.ExtendingPartnersIndexer"
         name="extending_partner_uids" />
     <adapter 

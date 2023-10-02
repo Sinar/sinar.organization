@@ -15,6 +15,11 @@
   </index>
   <column value="beneficiary_partner_uids" />
 
+  <index name="cited_partner_uids" meta_type="KeywordIndex">
+      <indexed_attr value="cited_partner_uids" />
+  </index>
+  <column value="cited_partner_uids" />
+
   <index name="extending_partner_uids" meta_type="KeywordIndex">
       <indexed_attr value="extending_partner_uids" />
   </index>

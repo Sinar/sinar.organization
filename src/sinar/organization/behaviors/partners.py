@@ -45,8 +45,8 @@ class IPartners(model.Schema):
                       )
 
     accountable_partners = RelationList(
-        title=u'Accountable',
-        description=u'''Organizations that are responsible for oversight
+        title='Accountable',
+        description='''Organizations that are responsible for oversight
                         of the activity and it's outcomes''',
         required=False,
         value_type=RelationChoice(
@@ -66,9 +66,30 @@ class IPartners(model.Schema):
                       )
 
     beneficiary_partners = RelationList(
-        title=u'Beneficiaries',
-        description=u'''Organizations that are beneficiares of the
+        title='Beneficiaries',
+        description='''Organizations that are beneficiares of the
                         activity or project''',
+        required=False,
+        value_type=RelationChoice(
+            source=CatalogSource(portal_type='Organization'),
+        ),
+    )
+
+    # Cited Partners
+    dexteritytextindexer.searchable('cited_partners')
+    directives.widget('cited_partners',
+                      RelatedItemsFieldWidget,
+                      pattern_options={
+                          'basePath': '/',
+                          'mode': 'auto',
+                          'favourites': [],
+                      }
+                      )
+
+    cited_partners = RelationList(
+        title='Cited',
+        description='''Organizations that have been cited or mentioned
+        for this item''',
         required=False,
         value_type=RelationChoice(
             source=CatalogSource(portal_type='Organization'),
@@ -87,8 +108,8 @@ class IPartners(model.Schema):
                       )
 
     extending_partners = RelationList(
-        title=u'Extending',
-        description=u'''Organizations that manages the budget and
+        title='Extending',
+        description='''Organizations that manages the budget and
                         direction of an activity or project on behalf of
                         the funding organization''',
         required=False,
@@ -109,8 +130,8 @@ class IPartners(model.Schema):
                       )
 
     funding_partners = RelationList(
-        title=u'Funding',
-        description=u'''Organizations which provides funds to the
+        title='Funding',
+        description='''Organizations which provides funds to the
                         activity or project''',
         required=False,
         value_type=RelationChoice(
@@ -130,8 +151,8 @@ class IPartners(model.Schema):
                       )
 
     implementing_partners = RelationList(
-        title=u'Implementing Partners',
-        description=u'''Organizations that are implementing partners of an
+        title='Implementing Partners',
+        description='''Organizations that are implementing partners of an
                         activity or project''',
         required=False,
         value_type=RelationChoice(
@@ -142,9 +163,10 @@ class IPartners(model.Schema):
     # fieldset set the tabs on the edit form
     fieldset(
         'partners',
-        label=_(u'Partners'),
+        label=_('Partners'),
         fields=[
             'accountable_partners',
+            'cited_partners',
             'beneficiary_partners',
             'extending_partners',
             'funding_partners',
@@ -180,6 +202,16 @@ class Partners(object):
         self.context.beneficiary_partners = value
 
     @property
+    def cited_partners(self):
+        if safe_hasattr(self.context, 'cited_partners'):
+            return self.context.cited_partners
+        return None
+
+    @cited_partners.setter
+    def cited_partners(self, value):
+        self.context.cited_partners = value
+
+    @property
     def extending_partners(self):
         if safe_hasattr(self.context, 'extending_partners'):
             return self.context.extending_partners
@@ -209,6 +241,7 @@ class Partners(object):
     def implementing_partners(self, value):
         self.context.implementing_partners = value
 
+# Custom Indexers
 
 @implementer(IIndexer)
 @adapter(IPartnersMarker, IZCatalog)
@@ -254,6 +287,21 @@ class ExtendingPartnersIndexer(object):
     def __call__(self):
         uids = []
         for partners in self.partners.extending_partners:
+            uids.append(partners.to_object.UID())
+        return uids
+
+@implementer(IIndexer)
+@adapter(IPartnersMarker, IZCatalog)
+class CitedPartnersIndexer(object):
+    """
+    """
+
+    def __init__(self, context, catalog):
+        self.partners = IPartnersMarker(context)
+
+    def __call__(self):
+        uids = []
+        for partners in self.partners.cited_partners:
             uids.append(partners.to_object.UID())
         return uids
 
