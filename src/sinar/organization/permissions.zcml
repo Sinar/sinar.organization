@@ -7,6 +7,12 @@
   <!-- -*- extra stuff goes here -*- -->
 
     <permission
+        id="sinar.organization.AddFocalPointPerson"
+        title="sinar.organization: Add FocalPointPerson"
+    />
+
+
+    <permission
         id="sinar.organization.AddOrganization"
         title="sinar.organization: Add Organization"
     />
