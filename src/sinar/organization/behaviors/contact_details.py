@@ -2,12 +2,12 @@
 
 from plone import schema
 from plone.autoform.interfaces import IFormFieldProvider
+from plone.schema import Email
 from plone.supermodel import model
 from Products.CMFPlone.utils import safe_hasattr
 from sinar.organization import _
 from zope.component import adapter
 from zope.interface import implementer, Interface, provider
-from plone.schema import Email
 
 
 class IContactDetailsMarker(Interface):

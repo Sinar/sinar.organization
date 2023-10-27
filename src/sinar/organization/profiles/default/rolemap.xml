@@ -3,6 +3,14 @@
   <permissions>
   <!-- -*- extra stuff goes here -*- -->
 
+    <permission name="sinar.organization: Add FocalPointPerson" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+    </permission>
+
+
     <permission name="sinar.organization: Add Organization" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
