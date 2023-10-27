@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from plone.app.layout.viewlets import ViewletBase
 from collective.relationhelpers import api
+from plone.app.layout.viewlets import ViewletBase
+
 
 class Donors(ViewletBase):
 

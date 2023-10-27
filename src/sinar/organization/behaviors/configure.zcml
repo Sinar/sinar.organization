@@ -10,6 +10,16 @@
     <!-- -*- extra stuff goes here -*- -->
 
     <plone:behavior
+        name="sinar.organization.contact_details"
+        title="ContactDetails"
+        description="Contact details including website, email address, phone number, etc."
+        provides=".contact_details.IContactDetails"
+        factory=".contact_details.ContactDetails"
+        marker=".contact_details.IContactDetailsMarker"
+        />
+
+
+    <plone:behavior
         name="sinar.organization.organization_type"
         title="OrganizationType"
         description="Standard types of organizations used in development"
