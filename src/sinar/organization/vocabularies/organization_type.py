@@ -27,6 +27,7 @@ class OrganizationType(object):
             VocabItem(u'academe', _(u'Academia / Educational Institution')),
             VocabItem(u'bilateral',_(u'Bilateral Organization')),
             VocabItem(u'cso', _(u'Civil Society')),
+            VocabItem(u'collective', _(u'Collective')),
             VocabItem(u'government-agency', _(u'Government Agency')),
             VocabItem(u'ingo', _(u'Intergovernmental Organization')),
             VocabItem(u'media',_(u'News or Media Organization')),
