@@ -8,7 +8,7 @@ from plone.supermodel.directives import fieldset
 from z3c.form.browser.radio import RadioFieldWidget
 from zope import schema
 from zope.interface import implementer
-from collective import dexteritytextindexer
+from plone.app.dexterity import textindexer
 from plone.app.z3cform.widget import RelatedItemsFieldWidget, SelectFieldWidget
 from z3c.relationfield.schema import RelationChoice, RelationList
 from Products.ZCatalog.interfaces import IZCatalog
@@ -24,7 +24,7 @@ from plone.app.vocabularies.catalog import CatalogSource
 class IFocalPointPerson(model.Schema):
     """ Marker interface and Dexterity Python Schema for FocalPointPerson
     """
-    dexteritytextindexer.searchable('partner')
+    textindexer.searchable('partner')
     directives.widget('partner',
                       RelatedItemsFieldWidget,
                       pattern_options={
@@ -42,7 +42,7 @@ class IFocalPointPerson(model.Schema):
         ),
     )
 
-    dexteritytextindexer.searchable('project')
+    textindexer.searchable('project')
     directives.widget('project',
                       RelatedItemsFieldWidget,
                       pattern_options={

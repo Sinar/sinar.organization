@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from collective import dexteritytextindexer
+from plone.app.dexterity import textindexer
 from plone import schema
 from plone.app.textfield import RichText
 from plone.app.vocabularies.catalog import CatalogSource
@@ -30,7 +30,7 @@ class IPartners(model.Schema):
     """
 
     # accountable partners
-    dexteritytextindexer.searchable('accountable_partners')
+    textindexer.searchable('accountable_partners')
     directives.widget('accountable_partners',
                       RelatedItemsFieldWidget,
                       pattern_options={
@@ -51,7 +51,7 @@ class IPartners(model.Schema):
     )
 
     # beneficiary_partners
-    dexteritytextindexer.searchable('beneficiary_partners')
+    textindexer.searchable('beneficiary_partners')
     directives.widget('beneficiary_partners',
                       RelatedItemsFieldWidget,
                       pattern_options={
@@ -72,7 +72,7 @@ class IPartners(model.Schema):
     )
 
     # Cited Partners
-    dexteritytextindexer.searchable('cited_partners')
+    textindexer.searchable('cited_partners')
     directives.widget('cited_partners',
                       RelatedItemsFieldWidget,
                       pattern_options={
@@ -93,7 +93,7 @@ class IPartners(model.Schema):
     )
 
     # Extending
-    dexteritytextindexer.searchable('extending_partners')
+    textindexer.searchable('extending_partners')
     directives.widget('extending_partners',
                       RelatedItemsFieldWidget,
                       pattern_options={
@@ -115,7 +115,7 @@ class IPartners(model.Schema):
     )
 
 # Funding
-    dexteritytextindexer.searchable('funding_partners')
+    textindexer.searchable('funding_partners')
     directives.widget('funding_partners',
                       RelatedItemsFieldWidget,
                       pattern_options={
@@ -136,7 +136,7 @@ class IPartners(model.Schema):
     )
 
     # implementing partners
-    dexteritytextindexer.searchable('implementing_partners')
+    textindexer.searchable('implementing_partners')
     directives.widget('implementing_partners',
                       RelatedItemsFieldWidget,
                       pattern_options={
