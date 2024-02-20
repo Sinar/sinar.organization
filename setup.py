@@ -52,8 +52,7 @@ setup(
         'z3c.jbot',
         'plone.api>=1.8.4',
         'plone.restapi',
-        'plone.app.dexterity',
-        'collective.dexteritytextindexer'
+        'plone.app.dexterity'
     ],
     extras_require={
         'test': [
