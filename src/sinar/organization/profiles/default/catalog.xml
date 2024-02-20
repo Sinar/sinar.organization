@@ -1,19 +1,38 @@
 <?xml version="1.0"?>
 <object name="portal_catalog">
-  <index name="donors" meta_type="KeywordIndex">
-      <indexed_attr value="donors" />
-  </index>
-  <column value="donors" />
-  <index name="implementing_partners" meta_type="KeywordIndex">
-      <indexed_attr value="implementing_partners" />
-  </index>
-  <column value="implementing_partners" />
-  <index name="beneficiaries" meta_type="KeywordIndex">
-      <indexed_attr value="beneficiaries" />
-  </index>
-  <column value="beneficiaries" />
   <index name="organization_type" meta_type="KeywordIndex">
       <indexed_attr value="organization_type" />
   </index>
   <column value="organization_type" />
+
+  <index name="accountable_partner_uids" meta_type="KeywordIndex">
+      <indexed_attr value="accountable_partner_uids" />
+  </index>
+  <column value="accountable_partner_uids" />
+
+  <index name="beneficiary_partner_uids" meta_type="KeywordIndex">
+      <indexed_attr value="beneficiary_partner_uids" />
+  </index>
+  <column value="beneficiary_partner_uids" />
+
+  <index name="cited_partner_uids" meta_type="KeywordIndex">
+      <indexed_attr value="cited_partner_uids" />
+  </index>
+  <column value="cited_partner_uids" />
+
+  <index name="extending_partner_uids" meta_type="KeywordIndex">
+      <indexed_attr value="extending_partner_uids" />
+  </index>
+  <column value="extending_partner_uids" />
+
+  <index name="funding_partner_uids" meta_type="KeywordIndex">
+      <indexed_attr value="funding_partner_uids" />
+  </index>
+  <column value="funding_partner_uids" />
+
+  <index name="implementing_partner_uids" meta_type="KeywordIndex">
+      <indexed_attr value="implementing_partner_uids" />
+  </index>
+  <column value="implementing_partner_uids" />
+
 </object>
