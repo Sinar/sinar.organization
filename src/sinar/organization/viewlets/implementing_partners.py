@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from collective.relationhelpers import api
 from plone import api
 from plone.app.layout.viewlets import ViewletBase
 
