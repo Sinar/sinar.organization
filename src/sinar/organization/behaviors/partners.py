@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from plone.app.dexterity import textindexer
+try:
+    from plone.app.dexterity import textindexer
+except ImportError:
+    from collective import dexteritytextindexer as textindexer
+
 from plone import schema
 from plone.app.textfield import RichText
 from plone.app.vocabularies.catalog import CatalogSource
