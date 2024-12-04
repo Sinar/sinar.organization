@@ -8,7 +8,10 @@ from plone.supermodel.directives import fieldset
 from z3c.form.browser.radio import RadioFieldWidget
 from zope import schema
 from zope.interface import implementer
-from plone.app.dexterity import textindexer
+try:
+    from plone.app.dexterity import textindexer
+except ImportError:
+    from collective import dexteritytextindexer as textindexer
 from plone.app.z3cform.widget import RelatedItemsFieldWidget, SelectFieldWidget
 from z3c.relationfield.schema import RelationChoice, RelationList
 from Products.ZCatalog.interfaces import IZCatalog
