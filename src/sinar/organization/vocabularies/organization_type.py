@@ -32,6 +32,7 @@ class OrganizationType(object):
             VocabItem(u'ingo', _(u'Intergovernmental Organization')),
             VocabItem(u'media',_(u'News or Media Organization')),
             VocabItem(u'private-sector', _(u'Private Sector / Business')),
+            VocabItem(u'political_party', _(u'Political Party')),
             VocabItem(u'research', _(u'Research Institutions and Think Tanks')),
             VocabItem(u'trade-association', _(u'Trade Association or Union')),
         ]
