@@ -6,11 +6,35 @@
 
  <!-- -*- extra stuff goes here -*- -->
 
+
+ <!-- Donors and Funders viewlet -->
+
+  <browser:viewlet
+     name="donors"
+     for="plone.event.interfaces.IEvent"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+     layer="zope.publisher.interfaces.browser.IDefaultBrowserLayer"
+     class=".donors.Donors"
+     template="donors.pt"
+     permission="zope2.View"
+     />
+
+   <browser:viewlet
+     name="donors"
+     for="plone.app.contenttypes.interfaces.INewsItem"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+     layer="zope.publisher.interfaces.browser.IDefaultBrowserLayer"
+     class=".donors.Donors"
+     template="donors.pt"
+     permission="zope2.View"
+     />
+
+
   <browser:viewlet
      name="donors"
      for="sinar.activity.content.activity.IActivity"
      manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
-     layer="sinar.organization.interfaces.ISinarOrganizationLayer"
+     layer="sinar.activity.interfaces.ISinarActivityLayer"
      class=".donors.Donors"
      template="donors.pt"
      permission="zope2.View"
@@ -36,15 +60,69 @@
      permission="zope2.View"
      />
 
+    <browser:viewlet
+     name="donors"
+     for="sinar.activity.content.project_activity.IProjectActivity"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+     layer="sinar.activity.interfaces.ISinarActivityLayer"
+     class=".donors.Donors"
+     template="donors.pt"
+     permission="zope2.View"
+     />
+
+    <browser:viewlet
+     name="donors"
+     for="sinar.opportunities.content.opportunity.IOpportunity"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+     layer="sinar.opportunities.interfaces.ISinarOpportunitiesLayer"
+     class=".donors.Donors"
+     template="donors.pt"
+     permission="zope2.View"
+     />
+
+
+ <!-- Implementing Partners viewlet -->
+
   <browser:viewlet
      name="implementing-partners"
-     for="sinar.activity.content.activity.IActivity"
+     for="plone.event.interfaces.IEvent"
      manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
-     layer="sinar.organization.interfaces.ISinarOrganizationLayer"
+     layer="zope.publisher.interfaces.browser.IDefaultBrowserLayer"
      class=".implementing_partners.ImplementingPartners"
      template="implementing-partners.pt"
      permission="zope2.View"
      />
+
+   <browser:viewlet
+     name="implementing-partners"
+     for="plone.app.contenttypes.interfaces.INewsItem"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+     layer="zope.publisher.interfaces.browser.IDefaultBrowserLayer"
+     class=".implementing_partners.ImplementingPartners"
+     template="implementing-partners.pt"
+     permission="zope2.View"
+     />
+
+  <browser:viewlet
+     name="implementing-partners"
+     for="sinar.activity.content.activity.IActivity"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+     layer="sinar.activity.interfaces.ISinarActivityLayer"
+     class=".implementing_partners.ImplementingPartners"
+     template="implementing-partners.pt"
+     permission="zope2.View"
+     />
+
+    <browser:viewlet
+     name="implementing-partners"
+     for="sinar.activity.content.project_activity.IProjectActivity"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+     layer="sinar.activity.interfaces.ISinarActivityLayer"
+     class=".implementing_partners.ImplementingPartners"
+     template="implementing-partners.pt"
+     permission="zope2.View"
+     />
+
 
   <browser:viewlet
      name="implementing-partners"
@@ -65,7 +143,8 @@
      template="implementing-partners.pt"
      permission="zope2.View"
      />
-     
+
+         
   <browser:viewlet
      name="implementing-partners"
      for="sinar.advisory.content.advisory.IAdvisory"
@@ -76,5 +155,14 @@
      permission="zope2.View"
      />
 
+    <browser:viewlet
+     name="implementing-partners"
+     for="sinar.opportunities.content.opportunity.IOpportunity"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+     layer="sinar.opportunities.interfaces.ISinarOpportunitiesLayer"
+     class=".implementing_partners.ImplementingPartners"
+     template="implementing-partners.pt"
+     permission="zope2.View"
+     />
 
 </configure>

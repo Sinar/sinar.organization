@@ -16,7 +16,7 @@
       </dl>
   </div> 
 
-<div tal:content="structure context/text/output | nothing" /> 
+<div tal:content="structure view/text/output | nothing" /> 
 
 </metal:block>
   </metal:content-core>
