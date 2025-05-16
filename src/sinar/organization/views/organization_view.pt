@@ -28,10 +28,10 @@
 
   <div tal:content="structure context/text/output | nothing" /> 
 
-      <dl class="row">
-          <dt>Website</dt>
-          <dd><a tal:attributes="href context/website_url">Link</a></dd>
-      </dl>
+  <dl class="row" tal:condition="context/website_url">
+      <dt>Website</dt>
+      <dd><a tal:attributes="href context/website_url | nothing">Link</a></dd>
+  </dl>
 
   <div tal:replace="structure provider:plone.belowcontentbody" />
 
