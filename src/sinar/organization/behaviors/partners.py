@@ -250,8 +250,9 @@ class AccountablePartnersIndexer(object):
 
     def __call__(self):
         uids = []
-        for partners in self.partners.accountable_partners:
-            uids.append(partners.to_object.UID())
+        if self.partnres.accountable_partners:
+            for partners in self.partners.accountable_partners:
+                uids.append(partners.to_object.UID())
         return uids
 
 
@@ -266,8 +267,9 @@ class BeneficiaryPartnersIndexer(object):
 
     def __call__(self):
         uids = []
-        for partners in self.partners.beneficiary_partners:
-            uids.append(partners.to_object.UID())
+        if self.partners.beneficiary_partners:
+            for partners in self.partners.beneficiary_partners:
+                uids.append(partners.to_object.UID())
         return uids
 
 
@@ -282,8 +284,9 @@ class ExtendingPartnersIndexer(object):
 
     def __call__(self):
         uids = []
-        for partners in self.partners.extending_partners:
-            uids.append(partners.to_object.UID())
+        if self.partners.extending_partners:
+            for partners in self.partners.extending_partners:
+                uids.append(partners.to_object.UID())
         return uids
 
 @implementer(IIndexer)
@@ -297,8 +300,9 @@ class CitedPartnersIndexer(object):
 
     def __call__(self):
         uids = []
-        for partners in self.partners.cited_partners:
-            uids.append(partners.to_object.UID())
+        if self.partners.cited_partners:
+            for partners in self.partners.cited_partners:
+                uids.append(partners.to_object.UID())
         return uids
 
 
@@ -313,8 +317,9 @@ class FundingPartnersIndexer(object):
 
     def __call__(self):
         uids = []
-        for partners in self.partners.funding_partners:
-            uids.append(partners.to_object.UID())
+        if self.partners.funding_partners:
+            for partners in self.partners.funding_partners:
+                uids.append(partners.to_object.UID())
         return uids
 
 
@@ -329,6 +334,7 @@ class ImplementingPartnersIndexer(object):
 
     def __call__(self):
         uids = []
-        for partners in self.partners.implementing_partners:
-            uids.append(partners.to_object.UID())
+        if self.partners.implementing_partners:
+            for partners in self.partners.implementing_partners:
+                uids.append(partners.to_object.UID())
         return uids
