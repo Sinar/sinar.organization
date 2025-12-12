@@ -12,6 +12,8 @@
 
       <div tal:replace="structure provider:plone.abovecontenttitle" />
 
+          <span class="badge text-bg-secondary"
+              tal:content="view/organization_type_title | nothing"></span>
           <h2 class="documentFirstHeading" i18n:translate="">
                <span tal:content="context/title" /> 
           </h2>
@@ -19,12 +21,6 @@
           <p class="lead" tal:content="context/description | none"></p>
 
       <div tal:replace="structure provider:plone.belowcontenttitle" />
-
-          <h4>
-                    <span class="badge bg-primary"
-                          tal:content="view/organization_type_title |
-                                       nothing" />
-          </h4>
 
   <div tal:content="structure context/text/output | nothing" /> 
 
