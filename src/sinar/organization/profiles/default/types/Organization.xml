@@ -52,6 +52,7 @@
     <element value="plone.relateditems"/>
     <element value="plone.richtext"/>
     <element value="sinar.organization.organization_type" />
+    <element value="sinar.miscbehavior.website_url" />
     <!--<element value="plone.tableofcontents"/>-->
     <!--<element value="plone.versioning" />-->
     <!--<element value="plone.translatable" />-->

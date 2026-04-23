@@ -1,6 +1,6 @@
 <div class="donors" tal:condition="view/donors">
     <hr />
-    <h4>Supported by</h4>
+    <h6>Supported by</h6>
     <span tal:repeat="partner view/donors">
        <a tal:attributes="href partner/absolute_url;
                           alt partner/title;

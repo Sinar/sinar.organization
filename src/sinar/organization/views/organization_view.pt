@@ -6,19 +6,35 @@
       metal:use-macro="context/main_template/macros/master">
 
 <body>
-  <metal:content-core fill-slot="content-core">
-  <metal:block define-macro="content-core">
+
+    <metal:main fill-slot="main">
+        <tal:main-macro metal:define-macro="main">
+
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+          <span class="badge text-bg-secondary"
+              tal:content="view/organization_type_title | nothing"></span>
+          <h2 class="documentFirstHeading" i18n:translate="">
+               <span tal:content="context/title" /> 
+          </h2>
+
+          <p class="lead" tal:content="context/description | none"></p>
+
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+  <div tal:content="structure context/text/output | nothing" /> 
+
+  <dl class="row" tal:condition="context/website_url">
+      <dt>Website</dt>
+      <dd><a tal:attributes="href context/website_url | nothing">Link</a></dd>
+  </dl>
+
+  <div tal:replace="structure provider:plone.belowcontentbody" />
 
 
-  <div><dl><dt>Type:</dt>
-           <dd tal:content="view/organization_type_title | nothing"
-                   /> 
-      </dl>
-  </div> 
+      </tal:main-macro>
+    </metal:main>
 
-<div tal:content="structure context/text/output | nothing" /> 
 
-</metal:block>
-  </metal:content-core>
 </body>
 </html>
