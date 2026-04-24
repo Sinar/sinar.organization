@@ -29,7 +29,8 @@ class IOrganizationType(model.Schema):
 
         required=False,
         vocabulary='sinar.organization.OrganizationType',
-        ) 
+    )
+
 
 @implementer(IOrganizationType)
 @adapter(IOrganizationTypeMarker)
@@ -45,4 +46,4 @@ class OrganizationType(object):
 
     @organization_type.setter
     def organization_type(self, value):
-        self.context.organization_type= value
+        self.context.organization_type = value

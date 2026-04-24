@@ -80,7 +80,7 @@ class OrganizationIntegrationTest(unittest.TestCase):
             self.portal,
             'organization_id',
             title='Organization container',
-         )
+        )
         self.parent = self.portal[parent_id]
         with self.assertRaises(InvalidParameterError):
             api.content.create(
