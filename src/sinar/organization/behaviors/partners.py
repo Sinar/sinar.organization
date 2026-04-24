@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 
-try:
-    from plone.app.dexterity import textindexer
-except ImportError:
-    from collective import dexteritytextindexer as textindexer
+from plone.app.dexterity import textindexer
 
 from plone import schema
-from plone.app.textfield import RichText
 from plone.app.vocabularies.catalog import CatalogSource
-from plone.app.z3cform.widget import RelatedItemsFieldWidget, SelectFieldWidget
+from plone.app.z3cform.widget import RelatedItemsFieldWidget
 from plone.autoform import directives
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.indexer.interfaces import IIndexer
@@ -243,6 +239,7 @@ class Partners(object):
 
 # Custom Indexers
 
+
 @implementer(IIndexer)
 @adapter(IPartnersMarker, IZCatalog)
 class AccountablePartnersIndexer(object):
@@ -292,6 +289,7 @@ class ExtendingPartnersIndexer(object):
             for partners in self.partners.extending_partners:
                 uids.append(partners.to_object.UID())
         return uids
+
 
 @implementer(IIndexer)
 @adapter(IPartnersMarker, IZCatalog)

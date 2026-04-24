@@ -9,8 +9,10 @@ from zope.schema.interfaces import IVocabularyFactory
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+
 class IOrganizationView(Interface):
     """ Marker Interface for IOrganizationView"""
+
 
 class OrganizationView(DefaultView):
     # If you want to define a template here, please remove the template from
@@ -28,8 +30,6 @@ class OrganizationView(DefaultView):
             return term.title
         else:
             return None
-
-
 
     def __call__(self):
         # Implement your own actions:

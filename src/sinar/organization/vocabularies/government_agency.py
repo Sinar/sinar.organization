@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from plone import api
-from plone.dexterity.interfaces import IDexterityContent
-from sinar.organization import _
-from zope.globalrequest import getRequest
 from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
@@ -24,9 +21,9 @@ class GovernmentAgency(object):
         # Return vocabulary of Organizations that are type Government
         # Agency only
         brains = api.content.find(
-                portal_type='Organization',
-                organization_type='government-agency',
-                )
+            portal_type='Organization',
+            organization_type='government-agency',
+        )
 
         # Create a list of tuples (UID, Title) of results
         result = [(brain["UID"], brain["Title"]) for brain in brains]

@@ -25,12 +25,12 @@ class OrganizationType(object):
         # this can be any static or dynamic data, a catalog result for example.
         items = [
             VocabItem(u'academe', _(u'Academia / Educational Institution')),
-            VocabItem(u'bilateral',_(u'Bilateral Organization')),
+            VocabItem(u'bilateral', _(u'Bilateral Organization')),
             VocabItem(u'cso', _(u'Civil Society')),
             VocabItem(u'collective', _(u'Collective')),
             VocabItem(u'government-agency', _(u'Government Agency')),
             VocabItem(u'ingo', _(u'Intergovernmental Organization')),
-            VocabItem(u'media',_(u'News or Media Organization')),
+            VocabItem(u'media', _(u'News or Media Organization')),
             VocabItem(u'private-sector', _(u'Private Sector / Business')),
             VocabItem(u'political_party', _(u'Political Party')),
             VocabItem(u'research', _(u'Research Institutions and Think Tanks')),

@@ -2,8 +2,8 @@
 """Setup tests for this package."""
 from plone import api
 from plone.app.testing import setRoles, TEST_USER_ID
-from sinar.organization.testing import (
-    SINAR_ORGANIZATION_INTEGRATION_TESTING  # noqa: E501,,,,,,,,,,,
+from sinar.organization.testing import (  # noqa: E501,,,,,,,,,,,
+    SINAR_ORGANIZATION_INTEGRATION_TESTING,
 )
 
 import unittest
@@ -35,9 +35,8 @@ class TestSetup(unittest.TestCase):
 
     def test_browserlayer(self):
         """Test that ISinarOrganizationLayer is registered."""
-        from sinar.organization.interfaces import (
-            ISinarOrganizationLayer)
         from plone.browserlayer import utils
+        from sinar.organization.interfaces import ISinarOrganizationLayer
         self.assertIn(
             ISinarOrganizationLayer,
             utils.registered_layers())
@@ -65,9 +64,8 @@ class TestUninstall(unittest.TestCase):
 
     def test_browserlayer_removed(self):
         """Test that ISinarOrganizationLayer is removed."""
-        from sinar.organization.interfaces import \
-            ISinarOrganizationLayer
         from plone.browserlayer import utils
+        from sinar.organization.interfaces import ISinarOrganizationLayer
         self.assertNotIn(
             ISinarOrganizationLayer,
             utils.registered_layers())

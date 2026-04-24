@@ -55,14 +55,15 @@ class IContactDetails(model.Schema):
     )
 
     contact_social_youtube = schema.URI(
-    title=_(u'Youtube channel'),
-    required=False,
+        title=_(u'Youtube channel'),
+        required=False,
     )
 
     contact_social_instagram = schema.URI(
-    title=_(u'Instagram profile'),
-    required=False,
+        title=_(u'Instagram profile'),
+        required=False,
     )
+
 
 @implementer(IContactDetails)
 @adapter(IContactDetailsMarker)
