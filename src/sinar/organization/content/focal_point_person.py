@@ -5,11 +5,8 @@ from plone.app.z3cform.widget import RelatedItemsFieldWidget
 from plone.autoform import directives
 from plone.dexterity.content import Container
 from plone.supermodel import model
-from plone.supermodel.directives import fieldset
-from z3c.form.browser.radio import RadioFieldWidget
-from zope import schema
-from zope.interface import implementer
 from z3c.relationfield.schema import RelationChoice, RelationList
+from zope.interface import implementer
 
 
 # from sinar.organization import _
