@@ -26,6 +26,15 @@
       post_handler=".setuphandlers.post_install"
       />
 
+  <genericsetup:upgradeStep
+      title="Register organization-view for the Organization type"
+      description="Ensure the Organization FTI uses organization-view as its default view and lists it among its available view methods."
+      profile="sinar.organization:default"
+      source="*"
+      destination="1001"
+      handler=".setuphandlers.upgrade_to_1001"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="sinar.organization (uninstall)"

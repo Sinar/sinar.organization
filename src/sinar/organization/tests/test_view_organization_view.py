@@ -7,43 +7,63 @@ from sinar.organization.testing import (
 )
 from zope.component import getMultiAdapter
 from zope.interface.interfaces import ComponentLookupError
+from zope.publisher.browser import TestRequest
 
 import unittest
 
 
 class ViewsIntegrationTest(unittest.TestCase):
 
+    """organization-view is registered with the addon's browser layer.
+
+    The integration fixture's portal request provides the layer via the
+    site skin, so the view resolves there.  A request without the layer
+    must not match - there is no unlayered fallback registration.
+    """
+
     layer = SINAR_ORGANIZATION_INTEGRATION_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        api.content.create(self.portal, 'Folder', 'other-folder')
-        api.content.create(self.portal, 'Document', 'front-page')
+        api.content.create(self.portal, 'Organization', 'test-org')
 
     def test_organization_view_is_registered(self):
         view = getMultiAdapter(
-            (self.portal['other-folder'], self.portal.REQUEST),
+            (self.portal['test-org'], self.portal.REQUEST),
             name='organization-view'
         )
-        self.assertTrue(view.__name__ == 'organization-view')
-        # self.assertTrue(
-        #     'Sample View' in view(),
-        #     'Sample View is not found in organization-view'
-        # )
+        self.assertEqual(view.__name__, 'organization-view')
 
-    def test_organization_view_not_matching_interface(self):
+    def test_organization_view_requires_browser_layer(self):
+        request = TestRequest('')
         with self.assertRaises(ComponentLookupError):
             getMultiAdapter(
-                (self.portal['front-page'], self.portal.REQUEST),
+                (self.portal['test-org'], request),
                 name='organization-view'
             )
 
+    def test_fti_registers_default_view(self):
+        fti = self.portal.portal_types['Organization']
+        self.assertEqual(fti.default_view, 'organization-view')
+        self.assertIn('organization-view', fti.view_methods)
+
 
 class ViewsFunctionalTest(unittest.TestCase):
+
+    """With the browser layer active, organization-view is the
+    registered default view of the Organization type."""
 
     layer = SINAR_ORGANIZATION_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        api.content.create(self.portal, 'Organization', 'test-org')
+
+    def test_organization_view_is_registered(self):
+        view = getMultiAdapter(
+            (self.portal['test-org'], self.portal.REQUEST),
+            name='organization-view'
+        )
+        self.assertEqual(view.__name__, 'organization-view')
