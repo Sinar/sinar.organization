@@ -3,6 +3,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import INonInstallable
 from zope.interface import implementer
 
+
 # FTI properties that register the custom default view of the Organization
 # type.  These are imported by the default profile, but we enforce them
 # explicitly in the install and upgrade steps so that sites where the FTI
