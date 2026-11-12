@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from plone import api
 from plone.app.testing import setRoles, TEST_USER_ID
 from sinar.organization import _
 from sinar.organization.testing import SINAR_ORGANIZATION_INTEGRATION_TESTING  # noqa
@@ -16,6 +17,13 @@ class GovernmentAgencyIntegrationTest(unittest.TestCase):
         """Custom shared utility setup for tests."""
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        self.organization = api.content.create(
+            self.portal,
+            'Organization',
+            'test-govt-org',
+            title='Test Government Agency',
+            organization_type='government-agency',
+        )
 
     def test_vocab_government_agency(self):
         vocab_name = 'sinar.organization.GovernmentAgency'
@@ -25,6 +33,6 @@ class GovernmentAgencyIntegrationTest(unittest.TestCase):
         vocabulary = factory(self.portal)
         self.assertTrue(IVocabularyTokenized.providedBy(vocabulary))
         self.assertEqual(
-            vocabulary.getTerm('sony-a7r-iii').title,
-            _(u'Sony Aplha 7R III'),
+            vocabulary.getTerm(self.organization.UID()).title,
+            _(u'Test Government Agency'),
         )

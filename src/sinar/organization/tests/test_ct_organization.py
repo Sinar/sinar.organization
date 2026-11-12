@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from plone import api
-from plone.api.exc import InvalidParameterError
 from plone.app.testing import setRoles, TEST_USER_ID
 from plone.dexterity.interfaces import IDexterityFTI
 from sinar.organization.content.organization import IOrganization  # NOQA E501
@@ -71,7 +70,7 @@ class OrganizationIntegrationTest(unittest.TestCase):
             u'{0} is not globally addable!'.format(fti.id)
         )
 
-    def test_ct_organization_filter_content_type_true(self):
+    def test_ct_organization_filter_content_type_false(self):
         setRoles(self.portal, TEST_USER_ID, ['Contributor'])
         fti = queryUtility(IDexterityFTI, name='Organization')
         portal_types = self.portal.portal_types
@@ -82,9 +81,12 @@ class OrganizationIntegrationTest(unittest.TestCase):
             title='Organization container',
         )
         self.parent = self.portal[parent_id]
-        with self.assertRaises(InvalidParameterError):
-            api.content.create(
-                container=self.parent,
-                type='Document',
-                title='My Content',
-            )
+        obj = api.content.create(
+            container=self.parent,
+            type='Document',
+            title='My Content',
+        )
+        self.assertTrue(
+            obj,
+            u'Cannot add {0} to {1} container!'.format(obj.id, fti.id)
+        )
